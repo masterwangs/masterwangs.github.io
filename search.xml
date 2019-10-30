@@ -3,17 +3,17 @@
   <entry>
     <title>Java语言概述</title>
     <url>/2019/10/30/Java%E8%AF%AD%E8%A8%80%E6%A6%82%E8%BF%B0/</url>
-    <content><![CDATA[<a id="more"></a>
+    <content><![CDATA[<p>​        主要在本节讲解，语言的概述、运行机制、环境搭建、常见问题及解决方法、注释、API、常用工具的介绍。</p>
+<a id="more"></a>
 
-<p>hexo clean &amp;&amp; hexo g &amp;&amp; hexo d </p>
 ]]></content>
       <categories>
         <category>Java基础</category>
       </categories>
       <tags>
+        <tag>语言概述</tag>
         <tag>Java</tag>
         <tag>基础</tag>
-        <tag>语言概述</tag>
       </tags>
   </entry>
   <entry>
