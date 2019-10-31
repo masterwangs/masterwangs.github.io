@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Java-变量与运算符</title>
-    <url>/2019/10/31/Java-%E5%8F%98%E9%87%8F%E4%B8%8E%E8%BF%90%E7%AE%97%E7%AC%A6/</url>
-    <content><![CDATA[<ul>
-<li><p>变量和运算符是任何一种语言的基础，没有一个好的基础，很难盖起高楼大厦。这里写一点自己觉得重要的东西。</p>
-</li>
-</ul>
+    <title>Java_变量和运算符</title>
+    <url>/2019/10/31/Java-%E5%8F%98%E9%87%8F%E5%92%8C%E8%BF%90%E7%AE%97%E7%AC%A6/</url>
+    <content><![CDATA[<p>变量和运算符是任何一种语言的基础，没有一个好的基础，很难盖起高楼大厦。这里写一点自己觉得重要的东西。</p>
 <a id="more"></a>
 
 <h2 id="Java中的名称命名规范"><a href="#Java中的名称命名规范" class="headerlink" title="Java中的名称命名规范"></a>Java中的名称命名规范</h2><p>给本科生上课的时候发现，很多人对标识符等起名时很随意，很难让人  “见名知意”  。所以今天文章开头就写一下命名的规范。顺便推荐一本书《代码整洁之道》。</p>
@@ -23,6 +20,13 @@
 <h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><p>我觉得和C语言差不多，如果以后遇见不同的地方，再回来更改。</p>
 <h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>emmmm 实在不知道写点什么了，今天不写了，拜拜~。~ 2019年10月31日22:55:54</p>
 ]]></content>
+      <categories>
+        <category>Java基础</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>基础</tag>
+      </tags>
   </entry>
   <entry>
     <title>Java_语言概述</title>
@@ -59,9 +63,9 @@
         <category>Java基础</category>
       </categories>
       <tags>
-        <tag>语言概述</tag>
         <tag>Java</tag>
         <tag>基础</tag>
+        <tag>语言概述</tag>
       </tags>
   </entry>
   <entry>
