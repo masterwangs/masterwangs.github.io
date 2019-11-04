@@ -50,16 +50,16 @@
   };
 </script>
 
-  <meta name="description" content="{} 1.以递归方式创建（构造）二叉树;2.分别采用递归算法实现 以上二叉树的前序、中序、后序遍历序列，输出结果；3.以递归方式计算二叉树深度;4.以递归方式计算结点总数；5.以递归方式计算叶子结点总数；6.以广义表的形式输出二叉树。7.以递归方式删除整颗二叉树： 树和二叉树是重要的数据结构类型，通过结合代码，介绍树和二叉树的一些操作。">
+  <meta name="description" content="树和二叉树是重要的数据结构类型，通过结合代码，介绍树和二叉树的一些操作。">
 <meta name="keywords" content="基础,C语言,树和二叉树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构_树和二叉树">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;04&#x2F;%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91%E5%92%8C%E4%BA%8C%E5%8F%89%E6%A0%91&#x2F;index.html">
 <meta property="og:site_name" content="WangS">
-<meta property="og:description" content="{} 1.以递归方式创建（构造）二叉树;2.分别采用递归算法实现 以上二叉树的前序、中序、后序遍历序列，输出结果；3.以递归方式计算二叉树深度;4.以递归方式计算结点总数；5.以递归方式计算叶子结点总数；6.以广义表的形式输出二叉树。7.以递归方式删除整颗二叉树： 树和二叉树是重要的数据结构类型，通过结合代码，介绍树和二叉树的一些操作。">
+<meta property="og:description" content="树和二叉树是重要的数据结构类型，通过结合代码，介绍树和二叉树的一些操作。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;04&#x2F;%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91%E5%92%8C%E4%BA%8C%E5%8F%89%E6%A0%91&#x2F;1.png">
-<meta property="og:updated_time" content="2019-11-04T14:07:24.091Z">
+<meta property="og:updated_time" content="2019-11-04T14:17:08.956Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;04&#x2F;%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91%E5%92%8C%E4%BA%8C%E5%8F%89%E6%A0%91&#x2F;1.png">
 
@@ -244,7 +244,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2019-11-04 20:57:17 / 修改时间：22:07:24" itemprop="dateCreated datePublished" datetime="2019-11-04T20:57:17+08:00">2019-11-04</time>
+              <time title="创建时间：2019-11-04 20:57:17 / 修改时间：22:17:08" itemprop="dateCreated datePublished" datetime="2019-11-04T20:57:17+08:00">2019-11-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -269,10 +269,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>{}</p>
-<p>1.以递归方式创建（构造）二叉树;2.分别采用递归算法实现</p>
-<p>以上二叉树的前序、中序、后序遍历序列，输出结果；3.以递归方式计算二叉树深度;4.以递归方式计算结点总数；5.以递归方式计算叶子结点总数；6.以广义表的形式输出二叉树。7.以递归方式删除整颗二叉树：</p>
-<p>树和二叉树是重要的数据结构类型，通过结合代码，介绍树和二叉树的一些操作。</p>
+        <p>树和二叉树是重要的数据结构类型，通过结合代码，介绍树和二叉树的一些操作。</p>
 <a id="more"></a>
 
 <h2 id="二叉树的创建"><a href="#二叉树的创建" class="headerlink" title="二叉树的创建"></a>二叉树的创建</h2><p>在计算机科学中，二叉树是每个结点最多有两个子树的树结构。通常子树被称作“左子树”（left subtree）和“右子树”（right subtree）。二叉树常被用于实现二叉查找树和二叉堆。<br>一棵深度为k，且有2^k-1个结点的二叉树，称为满二叉树。这种树的特点是每一层上的结点数都是最大结点数。而在一棵二叉树中，除最后一层外，若其余层都是满的，并且或者最后一层是满的，或者是在右边缺少连续若干结点，则此二叉树为完全二叉树。具有n个结点的完全二叉树的深度为floor(log2n)+1。深度为k的完全二叉树，至少有2k-1个叶子结点，至多有2k-1个结点。   — 百度百科</p>
