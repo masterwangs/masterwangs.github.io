@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="数据结构：图（简书） 推荐一个文章！！！ 图是重要的数据结构类型，通过结合代码，介绍图的一些操作。">
+<meta name="keywords" content="C语言,数据结构,图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构_图">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;24&#x2F;%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%9B%BE&#x2F;index.html">
+<meta property="og:site_name" content="WangS">
+<meta property="og:description" content="数据结构：图（简书） 推荐一个文章！！！ 图是重要的数据结构类型，通过结合代码，介绍图的一些操作。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-24T07:01:40.805Z">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2019/11/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%9B%BE/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>数据结构_图 | WangS</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WangS</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">一个人幸运的前提，其实是他有能力改变自己。</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">9</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">2</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">6</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+ 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%9B%BE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="王帅">
+      <meta itemprop="description" content="尽量充实自己。不要停止学习。不管学习什么，语言，厨艺，各种技能。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WangS">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据结构_图
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-11-24 14:18:47 / 修改时间：15:01:40" itemprop="dateCreated datePublished" datetime="2019-11-24T14:18:47+08:00">2019-11-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><a href="https://www.jianshu.com/p/bce71b2bdbc8" target="_blank" rel="noopener">数据结构：图（简书）</a> 推荐一个文章！！！</p>
+<p>图是重要的数据结构类型，通过结合代码，介绍图的一些操作。</p>
+<a id="more"></a>
+
+<h2 id="图的定义"><a href="#图的定义" class="headerlink" title="图的定义"></a>图的定义</h2><p> 图（graph）是由一些点（vertex）和这些点之间的连线（edge）所组成的；其中，点通常称为<strong><em>\</em>（vertex）**</strong>，而点到点之间的连线通常称之为<strong><em>\</em>边或者弧（edge）**</strong>。通常记为G=（V,E）。 </p>
+<h2 id="图的创建"><a href="#图的创建" class="headerlink" title="图的创建"></a>图的创建</h2><h3 id="图的邻接矩阵"><a href="#图的邻接矩阵" class="headerlink" title="图的邻接矩阵"></a>图的邻接矩阵</h3><p>图的邻接矩阵存储方式是用两个数组来表示图。一个一维数组存储图中顶点信息，一个二维数组（称为邻接矩阵）存储图中的边或弧的信息。 </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建图的邻接矩阵 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">MGraph</span><span class="params">( )</span> </span></span><br><span class="line"><span class="function"></span>&#123;	<span class="keyword">int</span> vertexNum,arcNum;</span><br><span class="line">	<span class="keyword">int</span> i,j,k;</span><br><span class="line">	<span class="comment">//datatype vertex[N];</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入顶点个数和边的个数："</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;vertexNum, &amp;arcNum);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"请输入顶点的值："</span>);</span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;vertexNum; i++) </span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;mGraph.vertex[i]);</span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;vertexNum; i++)    <span class="comment">//初始化邻接矩阵</span></span><br><span class="line">	   <span class="keyword">for</span> (j=<span class="number">0</span>; j&lt;vertexNum; j++)</span><br><span class="line">           mGraph.arc[i][j]=<span class="number">0</span>;        </span><br><span class="line">	<span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;vertexNum; i++)    <span class="comment">//初始化邻接矩阵中顶点的出度值和入度值  </span></span><br><span class="line">	&#123;	mGraph.degree_out[i] = <span class="number">0</span>; mGraph.degree_in[i] = <span class="number">0</span>; &#125;	</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"请输入边（边依附的两个顶点的序号）："</span>);          </span><br><span class="line">    <span class="keyword">for</span> (k=<span class="number">0</span>; k&lt;arcNum; k++)      <span class="comment">//依次输入每一条边</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;i,&amp;j);     <span class="comment">//边依附的两个顶点的序号</span></span><br><span class="line">        i--; j--;</span><br><span class="line">        mGraph.arc[i][j]=<span class="number">1</span>;  <span class="comment">//置有边标志        </span></span><br><span class="line">		<span class="comment">//mGraph.arc[j][i]=1;    </span></span><br><span class="line">	 	mGraph.degree_out[i]++;  <span class="comment">//计算顶点的出度 </span></span><br><span class="line">	  	mGraph.degree_in[j]++;  <span class="comment">//计算顶点的出度</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> vertexNum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//为了检测创建的图是否正确、输出图的邻接矩阵 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(<span class="keyword">int</span> vertexNum)</span></span></span><br><span class="line"><span class="function"></span>&#123;	<span class="keyword">int</span> i,j;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n输出顶点的值：\n"</span>);</span><br><span class="line">	<span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;vertexNum; i++)  <span class="comment">//输出顶点的值 </span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d  "</span>,mGraph.vertex[i]);</span><br><span class="line">        </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n输出邻接矩阵：\n"</span>);    </span><br><span class="line"> 	<span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;vertexNum; i++)    <span class="comment">//输出邻接矩阵</span></span><br><span class="line">	&#123;   <span class="keyword">for</span> (j=<span class="number">0</span>; j&lt;vertexNum; j++)</span><br><span class="line">          <span class="built_in">printf</span>(<span class="string">" %d  "</span> ,mGraph.arc[i][j]);   </span><br><span class="line"> 		<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="图的邻接表"><a href="#图的邻接表" class="headerlink" title="图的邻接表"></a>图的邻接表</h3><p>数组与链表相结合的存储方法称为邻接表。<br> 图中顶点用一个一维数组存储，当然，顶点也可以用单链表来存储，不过数组可以较容易地读取顶点信息，更加方便。另外，对于顶点数组中，每个数据元素还需要存储指向第一个邻接点的指针，以便于查找该顶点的边信息。图中每个顶点vi的所有邻接点构成一个线性表，由于邻接点的个数不定，所以用单链表存储，无向图称为顶点vi 的边表，有向图则称为顶点vi作为弧尾的出边表</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建图的邻接表 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span>  <span class="title">ALGraph</span><span class="params">( )</span></span></span><br><span class="line"><span class="function"></span>&#123;   </span><br><span class="line">	<span class="keyword">int</span> vertexNum,arcNum;   </span><br><span class="line">    datatype  x;</span><br><span class="line">    <span class="keyword">int</span> i,j,k;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ArcNode</span> *<span class="title">s</span>;</span> </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"请输入顶点个数和边的个数："</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;vertexNum, &amp;arcNum);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"请输入顶点的值："</span>);</span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;vertexNum; i++)   </span><br><span class="line">    <span class="comment">//输入顶点信息，初始化边表</span></span><br><span class="line">    &#123;	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">       	adjlist[i].vertex = x;</span><br><span class="line">  	 	adjlist[i].firstedge=<span class="literal">NULL</span>;   </span><br><span class="line">     	adjlist[i].degree_in = <span class="number">0</span>; adjlist[i].degree_out = <span class="number">0</span>; <span class="comment">//初始化入度和出度值 </span></span><br><span class="line">    &#125; </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"请输入边（边依附的两个顶点的序号）："</span>); </span><br><span class="line">	<span class="keyword">for</span> (k=<span class="number">0</span>; k&lt;arcNum; k++)   </span><br><span class="line">     <span class="comment">//输入边的信息存储在边表中</span></span><br><span class="line">     &#123;</span><br><span class="line">         <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;i,&amp;j); i--; j--;   </span><br><span class="line">         s=(struct ArcNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct ArcNode)); </span><br><span class="line">         s-&gt;adjvex=j;  	        </span><br><span class="line">         s-&gt;next=adjlist[i].firstedge;    </span><br><span class="line">         adjlist[i].firstedge=s;</span><br><span class="line">         adjlist[j].degree_in++ ; adjlist[i].degree_out++; <span class="comment">//统计入度和出度值 </span></span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> vertexNum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//为了检测创建的图是否正确，输出图的邻接表结构</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">displayALgraph</span><span class="params">(<span class="keyword">int</span> vertexNum)</span></span></span><br><span class="line"><span class="function"></span>&#123;	<span class="keyword">int</span> i,j;</span><br><span class="line">	datatype  x,y;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">ArcNode</span> *<span class="title">p</span>;</span>  </span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n输出顶点的值及其邻接边：\n"</span>);</span><br><span class="line">	<span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;vertexNum; i++)  <span class="comment">//输出顶点的值 </span></span><br><span class="line">    &#123;   </span><br><span class="line"> 		x = adjlist[i].vertex;</span><br><span class="line"> 		<span class="built_in">printf</span>(<span class="string">"%d  :"</span>, x );</span><br><span class="line"> 		p = adjlist[i].firstedge;</span><br><span class="line"> 		<span class="keyword">while</span>( p )</span><br><span class="line"> 		&#123;</span><br><span class="line"> 			j = p-&gt;adjvex;</span><br><span class="line"> 			y = adjlist[j].vertex;</span><br><span class="line"> 			<span class="built_in">printf</span>(<span class="string">"(%d,%d)  "</span>,x,y);</span><br><span class="line"> 			p = p-&gt;next;</span><br><span class="line"> 		&#125;</span><br><span class="line"> 		<span class="built_in">printf</span>(<span class="string">"\n"</span>); 		</span><br><span class="line">    &#125;      </span><br><span class="line">&#125; </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">displayALgraph</span><span class="params">(<span class="keyword">int</span> vertexNum)</span></span></span><br><span class="line"><span class="function"></span>&#123;	<span class="keyword">int</span> i,j;</span><br><span class="line">	datatype  x,y;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">ArcNode</span> *<span class="title">p</span>;</span>  </span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n输出顶点的值及其邻接边：\n"</span>);</span><br><span class="line">	<span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;vertexNum; i++)  <span class="comment">//输出顶点的值 </span></span><br><span class="line">    &#123;   </span><br><span class="line"> 		x = adjlist[i].vertex;</span><br><span class="line"> 		<span class="built_in">printf</span>(<span class="string">"%d  :"</span>, x );</span><br><span class="line"> 		p = adjlist[i].firstedge;</span><br><span class="line"> 		<span class="keyword">while</span>( p )</span><br><span class="line"> 		&#123;</span><br><span class="line"> 			j = p-&gt;adjvex;</span><br><span class="line"> 			y = adjlist[j].vertex;</span><br><span class="line"> 			<span class="built_in">printf</span>(<span class="string">"(%d,%d)  "</span>,x,y);</span><br><span class="line"> 			p = p-&gt;next;</span><br><span class="line"> 		&#125;</span><br><span class="line"> 		<span class="built_in">printf</span>(<span class="string">"\n"</span>); 		</span><br><span class="line">    &#125;      </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="图的遍历"><a href="#图的遍历" class="headerlink" title="图的遍历"></a>图的遍历</h2><p>从图中某一顶点出发访遍图中其余顶点，且使每一个顶点仅被访问一次，这一过程就叫做图的遍历。</p>
+<h3 id="深度优先遍历"><a href="#深度优先遍历" class="headerlink" title="深度优先遍历"></a>深度优先遍历</h3><ol>
+<li><p>从图中某个顶点v出发，访问v。</p>
+</li>
+<li><p>找到刚访问过得顶点的第一个未被访问的邻接点，访问该顶点。以该顶点为新顶点，重复此步骤，直至刚访问的顶点没有未被访问的邻接点为止。</p>
+</li>
+<li><p>返回前一个访问过得且扔有未被访问的邻接点的顶点，找到该顶点的下一个未被访问的邻接点，访问该顶点。</p>
+</li>
+<li><p>重复步骤2，3，直至图中所有顶点都被访问过。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//图的深度优先遍历 （邻接矩阵上） </span></span><br><span class="line"><span class="function"><span class="keyword">void</span>  <span class="title">DFSTraverse1</span><span class="params">(<span class="keyword">int</span> v,<span class="keyword">int</span> vertexNum)</span>  </span></span><br><span class="line"><span class="function"></span>&#123;	</span><br><span class="line">	<span class="keyword">int</span> i,j;</span><br><span class="line">	</span><br><span class="line">     <span class="built_in">printf</span>(<span class="string">"%d  "</span>,mGraph.vertex[v]); </span><br><span class="line">     visited [v]=<span class="number">1</span>;</span><br><span class="line">     <span class="keyword">for</span> (j=<span class="number">0</span>; j&lt;vertexNum; j++)</span><br><span class="line">         <span class="keyword">if</span> (mGraph.arc[v][j]==<span class="number">1</span> &amp;&amp; visited[j]==<span class="number">0</span>)</span><br><span class="line">           DFSTraverse1( j , vertexNum);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//图的深度优先遍历 （邻接表上） </span></span><br><span class="line"><span class="function"><span class="keyword">void</span>  <span class="title">DFSTraverse2</span><span class="params">(<span class="keyword">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>&#123;  	<span class="class"><span class="keyword">struct</span> <span class="title">ArcNode</span> *<span class="title">p</span>;</span>  	</span><br><span class="line">	<span class="keyword">int</span> j=<span class="number">0</span>;   </span><br><span class="line">	</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d  "</span>,adjlist[v].vertex);  visited[v]=<span class="number">1</span>;</span><br><span class="line">    p=adjlist[v].firstedge;    </span><br><span class="line">    <span class="keyword">while</span> (p!=<span class="literal">NULL</span>) </span><br><span class="line">    &#123;</span><br><span class="line">        j = p-&gt;adjvex;</span><br><span class="line">        <span class="keyword">if</span> (visited[j]==<span class="number">0</span>) DFSTraverse2(j);</span><br><span class="line">    p=p-&gt;next;           </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="广度优先遍历"><a href="#广度优先遍历" class="headerlink" title="广度优先遍历"></a>广度优先遍历</h3><ol>
+<li><p>从图中某个顶点v出发，访问v。</p>
+</li>
+<li><p>依次访问v的各个未被访问过得邻接点。</p>
+</li>
+<li><p>分别从这些邻接点出发依次访问他们的邻接点，并使“先被访问的顶点的邻接点”先于“后被访问的顶点的邻接点”被访问。重复步骤3，直至图中所有已被访问的顶点的邻接点都被访问到。</p>
+</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//图的广度优先遍历 （邻接矩阵上） </span></span><br><span class="line"><span class="function"><span class="keyword">void</span>  <span class="title">BFSTraverse1</span><span class="params">(<span class="keyword">int</span> v,<span class="keyword">int</span> vertexNum)</span> </span></span><br><span class="line"><span class="function"></span>&#123;   <span class="keyword">int</span> front,rear,Q[N];</span><br><span class="line">	<span class="keyword">int</span> j;</span><br><span class="line">	front=rear=<span class="number">-1</span>;   <span class="comment">//假设采用顺序队列且不会发生溢出</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d  "</span>,mGraph.vertex[v]);</span><br><span class="line">    visited[v]=<span class="number">1</span>;  Q[++rear]=v; </span><br><span class="line">    <span class="keyword">while</span> (front!=rear)</span><br><span class="line">     &#123;</span><br><span class="line">         v=Q[++front];   </span><br><span class="line">         <span class="keyword">for</span> (j=<span class="number">0</span>; j&lt;vertexNum; j++)</span><br><span class="line">            <span class="keyword">if</span> (mGraph.arc[v][j]==<span class="number">1</span> &amp;&amp; visited[j]==<span class="number">0</span> ) &#123;</span><br><span class="line"> 	       <span class="built_in">printf</span>(<span class="string">"%d  "</span>,mGraph.vertex[j]);</span><br><span class="line">	       visited[j]=<span class="number">1</span>; Q[++rear]=j;</span><br><span class="line">            &#125;</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//图的广度优先遍历 （邻接表上） </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BFSTraverse2</span><span class="params">(<span class="keyword">int</span> v)</span> </span></span><br><span class="line"><span class="function"></span>&#123;  	<span class="class"><span class="keyword">struct</span> <span class="title">ArcNode</span> *<span class="title">p</span>;</span></span><br><span class="line">	<span class="keyword">int</span> front,rear,Q[N];</span><br><span class="line">	<span class="keyword">int</span> j; </span><br><span class="line">	front=rear=<span class="number">-1</span>;   </span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d  "</span>,adjlist[v].vertex); visited[v]=<span class="number">1</span>;  Q[++rear]=v;   </span><br><span class="line">   	<span class="keyword">while</span> (front!=rear)</span><br><span class="line">   	&#123;</span><br><span class="line">       v=Q[++front];    p=adjlist[v].firstedge;    </span><br><span class="line">       <span class="keyword">while</span> (p!=<span class="literal">NULL</span>) </span><br><span class="line">       &#123;</span><br><span class="line">          j = p-&gt;adjvex;</span><br><span class="line">          <span class="keyword">if</span> (visited[j]==<span class="number">0</span>) </span><br><span class="line">		  &#123;	<span class="built_in">printf</span>(<span class="string">"%d  "</span>,adjlist[j].vertex);  </span><br><span class="line">    		visited[j]=<span class="number">1</span>; Q[++rear]=j;</span><br><span class="line">	      &#125;</span><br><span class="line">          p=p-&gt;next;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="顶点的度"><a href="#顶点的度" class="headerlink" title="顶点的度"></a>顶点的度</h2><p>连接顶点的边的数量称为该顶点的度。顶点的度在有向图和无向图中具有不同的表示。对于无向图，一个顶点V的度比较简单，其是连接该顶点的边的数量，记为D(V)。 例如，图二所示的无向图中，顶点V5的度为3。而V6的度为2。</p>
+<p>   对于有向图要稍复杂些，根据连接顶点V的边的方向性，一个顶点的度有<strong>入度</strong>和<strong>出度</strong>之分。</p>
+<ul>
+<li>入度是以该顶点为端点的入边数量， 记为ID(V)。</li>
+<li>出度是以该顶点为端点的出边数量， 记为OD(V)。</li>
+</ul>
+<p>邻接顶点是指图结构中一条边的两个顶点。 邻接顶点在有向图和无向图中具有不同的表示。对于无向图，邻接顶点比较简单。例如，在图二所示的无向图中，顶点V2和顶点V6互为邻接顶点，顶点V2和顶点V5互为邻接顶点等。</p>
+<p>   对于有向图要稍复杂些，根据连接顶点V的边的方向性，两个顶点分别称为<strong>起始顶点</strong>(起点或始点)和<strong>结束顶点</strong>(终点)。有向图的邻接顶点分为两类：</p>
+<ul>
+<li><strong>入边邻接顶点</strong>：连接该顶点的边中的起始顶点。例如，对于组成&lt;V2，V6&gt;这条边的两个顶点，V2是V6的入边邻接顶点。</li>
+<li><strong>出边邻接顶点：</strong>连接该顶点的边中的结束顶点。例如，对于组成&lt;V2，V6&gt;这条边的两个顶点，V6是V2的出边邻接顶点。</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printDegree1</span><span class="params">(<span class="keyword">int</span> vertexNum)</span>  <span class="comment">//输出顶点的度（基于邻接矩阵的） </span></span></span><br><span class="line"><span class="function"></span>&#123;	<span class="keyword">int</span> i;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;vertexNum; i++)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"顶点 %d 的出度为： %d  ，入度为： %d\n"</span>,mGraph.vertex[i],mGraph.degree_out[i],mGraph.degree_in[i]);	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printDegree2</span><span class="params">(<span class="keyword">int</span> vertexNum)</span>  <span class="comment">//输出顶点的度（基于邻接表的）</span></span></span><br><span class="line"><span class="function"></span>&#123;	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;vertexNum; i++)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"顶点 %d 的出度为： %d  ，入度为： %d\n"</span>,adjlist[i].vertex,adjlist[i].degree_out,adjlist[i].degree_in);	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> datatype;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 10</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//用于存储图的邻接矩阵的数组</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> &#123;</span> </span><br><span class="line">	datatype vertex[N];</span><br><span class="line">	<span class="keyword">int</span> arc[N][N];</span><br><span class="line">	<span class="keyword">int</span> degree_out[N];  <span class="comment">//顶点的出度 </span></span><br><span class="line">	<span class="keyword">int</span> degree_in[N];   <span class="comment">//顶点的入度  </span></span><br><span class="line">&#125;mGraph;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ArcNode</span></span></span><br><span class="line"><span class="class">&#123;</span>    <span class="keyword">int</span> adjvex; </span><br><span class="line">     <span class="class"><span class="keyword">struct</span> <span class="title">ArcNode</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">VertexNode</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">      datatype  vertex;</span><br><span class="line">      <span class="class"><span class="keyword">struct</span> <span class="title">ArcNode</span> *<span class="title">firstedge</span>;</span></span><br><span class="line">      <span class="keyword">int</span> degree_out;   <span class="comment">//顶点的出度 </span></span><br><span class="line">      <span class="keyword">int</span> degree_in;    <span class="comment">//顶点的入度 </span></span><br><span class="line">&#125; adjlist[N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> visited[N];</span><br><span class="line"></span><br><span class="line"><span class="comment">//初始化visited数组</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">initVisited</span><span class="params">(<span class="keyword">int</span> vertexNum)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;vertexNum; i++) </span><br><span class="line">		visited[i] = <span class="number">0</span>;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="comment">//函数模块</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">( )</span></span>&#123;</span><br><span class="line"><span class="comment">//功能模块</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+</div>
+    
+    
+    
+      
+        <div class="reward-container">
+  <div>原创技术分享，您的支持将鼓励我继续创作.</div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="王帅 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="王帅 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag"><i class="fa fa-tag"></i> C语言</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"><i class="fa fa-tag"></i> 数据结构</a>
+              <a href="/tags/%E5%9B%BE/" rel="tag"><i class="fa fa-tag"></i> 图</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/11/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91%E5%92%8C%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="next" title="数据结构_树和二叉树">
+                  <i class="fa fa-chevron-left"></i> 数据结构_树和二叉树
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#图的定义"><span class="nav-number">1.</span> <span class="nav-text">图的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图的创建"><span class="nav-number">2.</span> <span class="nav-text">图的创建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#图的邻接矩阵"><span class="nav-number">2.1.</span> <span class="nav-text">图的邻接矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图的邻接表"><span class="nav-number">2.2.</span> <span class="nav-text">图的邻接表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图的遍历"><span class="nav-number">3.</span> <span class="nav-text">图的遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#深度优先遍历"><span class="nav-number">3.1.</span> <span class="nav-text">深度优先遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#广度优先遍历"><span class="nav-number">3.2.</span> <span class="nav-text">广度优先遍历</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#顶点的度"><span class="nav-number">4.</span> <span class="nav-text">顶点的度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完整代码"><span class="nav-number">5.</span> <span class="nav-text">完整代码</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="王帅"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">王帅</p>
+  <div class="site-description" itemprop="description">尽量充实自己。不要停止学习。不管学习什么，语言，厨艺，各种技能。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/masterwangs" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;masterwangs" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/wang-shuai-i/activities" title="知  乎 &amp;rarr; https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;wang-shuai-i&#x2F;activities" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>知  乎</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/u/5320641287" title="Wei bo &amp;rarr; https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;5320641287" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Wei bo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/69921aa6dc24" title="简  书 &amp;rarr; https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;69921aa6dc24" rel="noopener" target="_blank"><i class="fa fa-fw fa-heartbeat"></i>简  书</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      推荐阅读
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://www.baidu.com/" title="http:&#x2F;&#x2F;www.baidu.com&#x2F;" rel="noopener" target="_blank">百度</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+<div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv" style='display:none'>
+    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    <span class="post-meta-divider">|</span>
+</span>
+<span id="busuanzi_container_site_uv" style='display:none'>
+    有<span id="busuanzi_value_site_uv"></span>人看过我的博客啦
+</span>
+</div>
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王帅</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
