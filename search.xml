@@ -1,6 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>数据结构_排序算法</title>
+    <url>/2019/11/25/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<p>文中图片、部分文字转载<a href="https://blog.csdn.net/yuxuan20062007/article/details/85186860" target="_blank" rel="noopener">十大经典排序算法（动图演示）</a> 感谢作者贡献，如需删除请联系本人！ </p>
+<p><strong>排序</strong>是计算机内经常进行的一种操作，其目的是将一组“无序”的记录序列调整为“有序”的记录序列。分内部排序和外部排序，若整个排序过程不需要访问外存便能完成，则称此类排序问题为内部排序。反之，若参加排序的记录数量很大，整个序列的排序过程不可能在内存中完成，则称此类排序问题为外部排序。内部排序的过程是一个逐步扩大记录的有序序列长度的过程。</p>
+<a id="more"></a>
+
+<h2 id="直接插入排序"><a href="#直接插入排序" class="headerlink" title="直接插入排序"></a>直接插入排序</h2><p>插入排序（Insertion-Sort）的算法描述是一种简单直观的排序算法。它的工作原理是通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。 </p>
+<p>算法描述</p>
+<ol>
+<li>从第一个元素开始，该元素可以认为已经被排序；</li>
+<li>取出下一个元素，在已经排序的元素序列中从后向前扫描；</li>
+<li>如果该元素（已排序）大于新元素，将该元素移到下一位置；</li>
+<li>重复步骤3，直到找到已排序的元素小于或者等于新元素的位置；</li>
+<li>将新元素插入到该位置后；</li>
+<li>重复步骤2~5。</li>
+</ol>
+<p>动图演示</p>
+<p><img src="/2019/11/25/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/1.gif" alt="直接插入排序"></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//直接插入排序算法 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span>  <span class="title">insertSort</span> <span class="params">(<span class="keyword">int</span>  r[ ], <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123; 	<span class="keyword">int</span> i,j;	</span><br><span class="line">    <span class="keyword">clock_t</span> begin,finish;</span><br><span class="line">    <span class="keyword">double</span> duration;</span><br><span class="line">    begin=clock();</span><br><span class="line">   	<span class="keyword">for</span> (i=<span class="number">2</span>; i&lt;=n; i++)</span><br><span class="line">   	&#123; </span><br><span class="line">    	r[<span class="number">0</span>]=r[i]; j=i<span class="number">-1</span>;</span><br><span class="line">       	<span class="keyword">while</span> (r[<span class="number">0</span>]&lt;r[j])</span><br><span class="line">       	&#123;  </span><br><span class="line">        	r[j+<span class="number">1</span>]=r[j];	</span><br><span class="line">	 		j=j<span class="number">-1</span>;	</span><br><span class="line">    	&#125;</span><br><span class="line">     	r[j+<span class="number">1</span>]=r[<span class="number">0</span>];</span><br><span class="line">		<span class="comment">//displayArray(r,n);   //调试用，便于查看中间结果  		</span></span><br><span class="line">	&#125;</span><br><span class="line">	finish=clock();</span><br><span class="line">	duration =(<span class="keyword">double</span>)(finish - begin) / CLOCKS_PER_SEC;</span><br><span class="line">	<span class="built_in">printf</span>( <span class="string">"\n%f seconds\n"</span>, duration );  </span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h2><p>先将整个待排序的记录序列分割成为若干子序列分别进行直接插入排序。</p>
+<p>算法描述：</p>
+<ul>
+<li>选择一个增量序列t1，t2，…，tk，其中ti&gt;tj，tk=1；</li>
+<li>按增量序列个数k，对序列进行k 趟排序；</li>
+<li>每趟排序，根据对应的增量ti，将待排序列分割成若干长度为m 的子序列，分别对各子表进行直接插入排序。仅增量因子为1 时，整个序列作为一个表来处理，表长度即为整个序列的长度。</li>
+</ul>
+<p>动图演示</p>
+<p><img src="/2019/11/25/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/2.gif" alt="2"></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//希尔排序算法 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span>  <span class="title">shellSort</span> <span class="params">(<span class="keyword">int</span>  r[ ], <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123; 	<span class="keyword">int</span> i,j,d;</span><br><span class="line">	<span class="keyword">for</span> (d=n/<span class="number">2</span>; d&gt;=<span class="number">1</span>; d=d/<span class="number">2</span>) </span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (i=d+<span class="number">1</span>; i&lt;=n; i++)  <span class="comment">//将r[i]插入到所属的子序列中</span></span><br><span class="line">		&#123;</span><br><span class="line">     		r[<span class="number">0</span>]=r[i];                     <span class="comment">//暂存待插入记录 </span></span><br><span class="line">     		j=i-d;                   <span class="comment">//j指向所属子序列的最后一个记录</span></span><br><span class="line">     		<span class="keyword">while</span> (j&gt;<span class="number">0</span> &amp;&amp; r[<span class="number">0</span>]&lt;r[j])</span><br><span class="line">     		&#123; </span><br><span class="line">          		r[j+d]=r[j];       <span class="comment">//记录后移d个位置</span></span><br><span class="line">          		j=j-d;            <span class="comment">//比较同一子序列的前一个记录</span></span><br><span class="line">      		&#125;</span><br><span class="line">      		r[j+d]=r[<span class="number">0</span>];       		</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//displayArray(r,n);   //调试用，便于查看中间结果 </span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><p>冒泡排序是一种简单的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果它们的顺序错误就把它们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。这个算法的名字由来是因为越小的元素会经由交换慢慢“浮”到数列的顶端。</p>
+<p>算法描述</p>
+<ul>
+<li>比较相邻的元素。如果第一个比第二个大，就交换它们两个；</li>
+<li>对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对，这样在最后的元素应该会是最大的数；</li>
+<li>针对所有的元素重复以上的步骤，除了最后一个；</li>
+<li>重复步骤1~3，直到排序完成。</li>
+</ul>
+<p>动图演示</p>
+<p><img src="/2019/11/25/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/3.gif" alt="3"></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//冒泡排序算法 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubbleSort</span><span class="params">(<span class="keyword">int</span> r[ ], <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;	</span><br><span class="line">    <span class="keyword">int</span> exchange,bound,j;</span><br><span class="line">	exchange=n; 	</span><br><span class="line">    <span class="keyword">while</span> (exchange) </span><br><span class="line">    &#123;</span><br><span class="line">        bound=exchange; </span><br><span class="line">        exchange=<span class="number">0</span>; </span><br><span class="line">        <span class="keyword">for</span> (j=<span class="number">1</span>; j&lt;bound; j++)</span><br><span class="line">            <span class="keyword">if</span> (r[j]&gt;r[j+<span class="number">1</span>]) &#123;</span><br><span class="line">                r[<span class="number">0</span>]=r[j]; r[j]=r[j+<span class="number">1</span>]; r[j+<span class="number">1</span>]=r[<span class="number">0</span>];</span><br><span class="line">	      		exchange=j; </span><br><span class="line">            &#125;</span><br><span class="line">         <span class="comment">//displayArray(r,n);</span></span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><p>快速排序的基本思想：通过一趟排序将待排记录分隔成独立的两部分，其中一部分记录的关键字均比另一部分的关键字小，则可分别对这两部分记录继续进行排序，以达到整个序列有序。</p>
+<p>算法描述</p>
+<p>快速排序使用分治法来把一个串分为两个子串。具体算法描述如下：</p>
+<ul>
+<li>从数列中挑出一个元素，称为 “基准”；</li>
+<li>重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区操作；</li>
+<li>递归地把小于基准值元素的子数列和大于基准值元素的子数列排序。</li>
+</ul>
+<p>动图演示</p>
+<p><img src="/2019/11/25/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/4.gif" alt="4"></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"> <span class="comment">//快速排序算法 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quickSort</span><span class="params">(<span class="keyword">int</span> k[],<span class="keyword">int</span> s,<span class="keyword">int</span> t,<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j;</span><br><span class="line">	<span class="keyword">if</span>(s&lt;t)</span><br><span class="line">	&#123;</span><br><span class="line">		i=s;j=t+<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">do</span>&#123;</span><br><span class="line">				i++;</span><br><span class="line">			&#125;<span class="keyword">while</span>(!(k[s]&lt;k[i]||i==t));</span><br><span class="line">			<span class="keyword">do</span>&#123;</span><br><span class="line">				j--;</span><br><span class="line">			&#125;<span class="keyword">while</span>(!(k[s]&gt;k[j]||j==s));</span><br><span class="line">			<span class="keyword">if</span>(i&lt;j) &#123;k[<span class="number">0</span>]=k[i];k[i]=k[j];k[j]=k[<span class="number">0</span>];&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		k[<span class="number">0</span>]=k[s];k[s]=k[j];k[j]=k[<span class="number">0</span>];<span class="comment">//swap(&amp;k[s],&amp;k[j]);</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">//displayArray(k,n);   //调试用，便于查看中间结果</span></span><br><span class="line">		</span><br><span class="line">		quickSort(k,s,j<span class="number">-1</span>,n);</span><br><span class="line">		quickSort(k,j+<span class="number">1</span>,t,n);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><p>归并排序是建立在归并操作上的一种有效的排序算法。该算法是采用分治法的一个非常典型的应用。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表合并成一个有序表，称为2-路归并。 </p>
+<p>算法描述</p>
+<ul>
+<li>把长度为n的输入序列分成两个长度为n/2的子序列；</li>
+<li>对这两个子序列分别采用归并排序；</li>
+<li>将两个排序好的子序列合并成一个最终的排序序列。</li>
+</ul>
+<p>动图演示</p>
+<p><img src="/2019/11/25/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/5.gif" alt="5"></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//归并相邻两个子序列 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Merge</span> <span class="params">(<span class="keyword">int</span> r[ ], <span class="keyword">int</span> r1[ ], <span class="keyword">int</span> s, <span class="keyword">int</span> m, <span class="keyword">int</span> t )</span></span></span><br><span class="line"><span class="function"></span>&#123;	<span class="keyword">int</span> i,j,k;</span><br><span class="line">    i=s;   j=m+<span class="number">1</span>;   k=s;</span><br><span class="line">    <span class="keyword">while</span> (i&lt;=m &amp;&amp; j&lt;=t)</span><br><span class="line">    &#123;   </span><br><span class="line">        <span class="keyword">if</span> (r[i]&lt;=r[j])  r1[k++]=r[i++];</span><br><span class="line">        <span class="keyword">else</span>  r1[k++]=r[j++]; </span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">if</span> (i&lt;=m)  <span class="keyword">while</span> (i&lt;=m)              <span class="comment">//收尾处理</span></span><br><span class="line">                           r1[k++]=r[i++];    <span class="comment">//前一个子序列</span></span><br><span class="line">     <span class="keyword">else</span>  <span class="keyword">while</span> (j&lt;=t)</span><br><span class="line">                  r1[k++]=r[j++];             <span class="comment">//后一个子序列</span></span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">//一趟二路归并 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span>  <span class="title">MergePass</span> <span class="params">(<span class="keyword">int</span>  r[ ], <span class="keyword">int</span>  r1[ ], <span class="keyword">int</span>  n, <span class="keyword">int</span>  h)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">     <span class="keyword">int</span> i=<span class="number">1</span>,k=<span class="number">1</span>;</span><br><span class="line">     <span class="keyword">while</span> (i &lt;= n<span class="number">-2</span>*h+<span class="number">1</span>)                <span class="comment">//情况1</span></span><br><span class="line">     &#123;</span><br><span class="line">           Merge (r, r1, i, i+h<span class="number">-1</span>,i+<span class="number">2</span>*h<span class="number">-1</span>);</span><br><span class="line">           i+=<span class="number">2</span>*h;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (i&lt; n-h+<span class="number">1</span>) Merge (r, r1, i,i+h<span class="number">-1</span>, n);   <span class="comment">//情况2</span></span><br><span class="line">      <span class="keyword">else</span> <span class="keyword">for</span> (k=i; k&lt;=n; k++)    <span class="comment">//情况3</span></span><br><span class="line">                 r1[k]=r[k];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//二路归并排序算法 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span>  <span class="title">MergeSort</span> <span class="params">(<span class="keyword">int</span> r[ ], <span class="keyword">int</span> r1[ ], <span class="keyword">int</span> n )</span></span></span><br><span class="line"><span class="function"></span>&#123;	<span class="keyword">int</span> h;</span><br><span class="line">    h=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (h&lt;n)</span><br><span class="line">    &#123;</span><br><span class="line">         MergePass (r, r1, n, h);</span><br><span class="line">         h=<span class="number">2</span>*h;</span><br><span class="line">         <span class="comment">//displayArray(r1,n);  //调试用，便于查看中间结果</span></span><br><span class="line">         MergePass (r1, r, n, h);</span><br><span class="line">         h=<span class="number">2</span>*h;</span><br><span class="line">         <span class="comment">//displayArray(r,n); //调试用，便于查看中间结果</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function">function <span class="title">mergeSort</span><span class="params">(arr)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> len = arr.length;</span><br><span class="line">    <span class="keyword">if</span> (len &lt; <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> arr;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> middle = Math.floor(len / <span class="number">2</span>),</span><br><span class="line">        left = arr.slice(<span class="number">0</span>, middle),</span><br><span class="line">        right = arr.slice(middle);</span><br><span class="line">    <span class="keyword">return</span> merge(mergeSort(left), mergeSort(right));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">function <span class="title">merge</span><span class="params">(left, right)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> result = [];</span><br><span class="line">    <span class="keyword">while</span> (left.length&gt;<span class="number">0</span> &amp;&amp; right.length&gt;<span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (left[<span class="number">0</span>] &lt;= right[<span class="number">0</span>]) &#123;</span><br><span class="line">            result.push(left.shift());</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            result.push(right.shift());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (left.length)</span><br><span class="line">        result.push(left.shift());</span><br><span class="line">    <span class="keyword">while</span> (right.length)</span><br><span class="line">        result.push(right.shift());</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h2><p>堆排序（Heapsort）是指利用堆这种数据结构所设计的一种排序算法。堆积是一个近似完全二叉树的结构，并同时满足堆积的性质：即子结点的键值或索引总是小于（或者大于）它的父节点。</p>
+<p>算法描述</p>
+<ul>
+<li>将初始待排序关键字序列(R1,R2….Rn)构建成大顶堆，此堆为初始的无序区；</li>
+<li>将堆顶元素R[1]与最后一个元素R[n]交换，此时得到新的无序区(R1,R2,……Rn-1)和新的有序区(Rn),且满足R[1,2…n-1]&lt;=R[n]；</li>
+<li>由于交换后新的堆顶R[1]可能违反堆的性质，因此需要对当前无序区(R1,R2,……Rn-1)调整为新堆，然后再次将R[1]与无序区最后一个元素交换，得到新的无序区(R1,R2….Rn-2)和新的有序区(Rn-1,Rn)。不断重复此过程直到有序区的元素个数为n-1，则整个排序过程完成。</li>
+</ul>
+<p>动图演示</p>
+<p><img src="/2019/11/25/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/6.gif" alt="6"></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//堆排序算法 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span>  <span class="title">heapSort</span> <span class="params">( <span class="keyword">int</span>  r[], <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,j;</span><br><span class="line">	<span class="keyword">for</span> (i=n/<span class="number">2</span>; i&gt;=<span class="number">1</span>; i--)      <span class="comment">//初建堆</span></span><br><span class="line">       shift(r, i, n) ;  </span><br><span class="line">	     </span><br><span class="line"> 	<span class="comment">//displayArray(r,n);  </span></span><br><span class="line"> 	</span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">1</span>; i&lt;n; i++ )</span><br><span class="line">    &#123;  j = n-i+<span class="number">1</span>;</span><br><span class="line">       r[<span class="number">0</span>]=r[<span class="number">1</span>];r[<span class="number">1</span>]=r[j];r[j]=r[<span class="number">0</span>];;        <span class="comment">//移走堆顶</span></span><br><span class="line">       shift(r, <span class="number">1</span>, n-i);               <span class="comment">//重建堆</span></span><br><span class="line">       <span class="comment">//displayArray(r,n);   //调试用，便于查看中间结果 </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>C语言</tag>
+        <tag>数据结构</tag>
+        <tag>排序算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>数据结构_图</title>
     <url>/2019/11/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%9B%BE/</url>
     <content><![CDATA[<p><a href="https://www.jianshu.com/p/bce71b2bdbc8" target="_blank" rel="noopener">数据结构：图（简书）</a> 推荐一个文章！！！</p>
@@ -58,9 +146,9 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>图</tag>
         <tag>C语言</tag>
         <tag>数据结构</tag>
+        <tag>图</tag>
       </tags>
   </entry>
   <entry>
